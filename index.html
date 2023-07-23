@@ -12,7 +12,7 @@
         <h1>WEATHER APP</h1>
         <div>
             <input type="text" name="" id="input" placeholder="Enter city name">
-            <button id="search" onclick="searchByCity()">Search</button></input>
+            <button id="search" onclick="searchByCity()">Search</button>
         </div>
     </div>
 
@@ -82,30 +82,30 @@
 
             <div class="dayF">
                 <p class="date">Sun Jul 03 2022</p>
-                <p>31 °C / 31 °C</p>
+                <p class="pm">31 °C / 31 °C</p>
                 <p class="desc">Overcast Clouds</p>
             </div>
 
             <div class="dayF">
                 <p class="date">Sun Jul 03 2022</p>
-                <p>31 °C / 31 °C</p>
+                <p class="pm">31 °C / 31 °C</p>
                 <p class="desc">Overcast Clouds</p>
             </div>
 
             <div class="dayF">
                 <p class="date">Sun Jul 03 2022</p>
-                <p>31 °C / 31 °C</p>
+                <p class="pm">31 °C / 31 °C</p>
                 <p class="desc">Overcast Clouds</p>
             </div>
 
             <div class="dayF">
                 <p class="date">Sun Jul 03 2022</p>
-                <p>31 °C / 31 °C</p>
+                <p class="pm">31 °C / 31 °C</p>
                 <p class="desc">Overcast Clouds</p>
             </div>
         </div>
     </div>
-    <script src="/weather.js"></script>
+
 </body>
 
 <script>
@@ -115,7 +115,7 @@
             navigator.geolocation.getCurrentPosition((position)=>{
                 let lon= position.coords.longitude;
                 let lat= position.coords.latitude;
-                const url= `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&` + `lon=${lon}&appid=${apikey}`;
+                const url= `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&` + `lon=${lon}&appid=${apikey}`;
                 
     
                 fetch(url).then((res)=>{
@@ -135,7 +135,7 @@
     
     function searchByCity(){
         var place= document.getElementById('input').value;
-        var urlsearch= `http://api.openweathermap.org/data/2.5/weather?q=${place}&` + `appid=${apikey}`;
+        var urlsearch= `https://api.openweathermap.org/data/2.5/weather?q=${place}&` + `appid=${apikey}`;
     
         fetch(urlsearch).then((res)=>{
             return res.json();
@@ -148,7 +148,7 @@
     
     function weatherReport(data){
     
-        var urlcast= `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&` + `appid=${apikey}`;
+        var urlcast= `https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&` + `appid=${apikey}`;
     
         fetch(urlcast).then((res)=>{
             return res.json();
@@ -168,7 +168,7 @@
             console.log(data.weather[0].description)
             
             let icon1= data.weather[0].icon;
-            let iconurl= "http://api.openweathermap.org/img/w/"+ icon1 +".png";
+            let iconurl= "https://api.openweathermap.org/img/w/"+ icon1 +".png";
             document.getElementById('img').src=iconurl
         })
     
